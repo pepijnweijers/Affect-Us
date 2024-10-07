@@ -9,12 +9,12 @@ export default function Home() {
     const questions = [
         {
             number: "Vraag 1 van 5",
-            question: "Hoe voel je je?",
+            question: "vind je het leuk hier?",
             type: "singleChoice",
             answers: [
-                { text: "Goed", className: "antwoord1" },
-                { text: "Neutraal", className: "antwoord2" },
-                { text: "Slecht", className: "antwoord3" }
+                { text: "Ja", className: "antwoord1" },
+                { text: "Nee", className: "antwoord2" },
+                { text: "Geen antwoord", className: "antwoord3" }
             ]
         },
         {
@@ -22,13 +22,36 @@ export default function Home() {
             question: "Wat vind jij het leukste om te doen in je vrijetijd?",
             type: "singleChoice",
             answers: [
-                { text: "Aan school zitten", className: "antwoord1" },
+                { text: "Wandelen", className: "antwoord1" },
                 { text: "Sporten", className: "antwoord2" },
-                { text: "Boek lezen", className: "antwoord3" },
-                { text: "Boek lezen", className: "antwoord3" },
                 { text: "Boek lezen", className: "antwoord3" }
             ]
-        }
+        },
+        {
+            number: "Vraag 3 van 5",
+            question: "Hoe erg heb je het hier naar je zin?",
+            type: "singleChoice",
+            answers: [
+                { text: "Totaal niet", className: "antwoord1" },
+                { text: "Niet zo", className: "antwoord2" },
+                { text: "Neutraal", className: "antwoord3" },
+                { text: "Leuk", className: "antwoord4" },
+                { text: "Super leuk", className: "antwoord5" }
+
+            ]
+        },
+        {
+            number: "Vraag 2 van 5",
+            question: "Mijn gezondheid is even goed als die van de meeste van mijn vrienden.",
+            type: "singleChoice",
+            answers: [
+                { text: "Helemaal oneens", className: "antwoord1" },
+                { text: "Oneens", className: "antwoord2" },
+                { text: "Neutraal", className: "antwoord3" },
+                { text: "Eens", className: "antwoord4" },
+                { text: "Helemaal eens", className: "antwoord5" }
+            ]
+        },
     ];
 
     const updateStep = () => {
