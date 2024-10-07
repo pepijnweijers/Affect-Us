@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import './css/styles.css';  // Correct pad naar je CSS-map
+import './CSS/styles.css'; 
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -8,21 +8,23 @@ export default function Home() {
 
     const questions = [
         {
+            number: "vraag 1 van 5",
             question: "Hoe voel je je?",
             type: "singleChoice",
             answers: [
-                "Goedd",
-                "Neutraal",
-                "Slecht"
+                { text: "Goed", className: "antwoord1" },
+                { text: "Neutraal", className: "antwoord2" },
+                { text: "Slecht", className: "antwoord3" }
             ]
         },
         {
+            number: "vraag 2 van 5",
             question: "Wat ga je vandaag doen?",
             type: "singleChoice",
             answers: [
-                "School",
-                "Sporten",
-                "Lezen"
+                { text: "School", className: "antwoord1" },
+                { text: "Sporten", className: "antwoord2" },
+                { text: "Lezen", className: "antwoord3" }
             ]
         }
     ];
@@ -46,29 +48,26 @@ export default function Home() {
     }, [step]);
 
     return (
-        <div>
+        <div className="container">
             {questions.map((question, index) => (
                 step === index && (
-                    <div key={index}>
-                        <h2 id={`question-${index}`} tabIndex={0}>{question.question}</h2>
-                        {question.answers.map((answer, answerIndex) => (
-                            <label
-                                key={answerIndex}
-                                htmlFor={`answer-${index}-${answerIndex}`}
-                                tabIndex={0} 
-                                onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)} 
-                            >
-                                <input
-                                    type="radio"
-                                    id={`answer-${index}-${answerIndex}`}
-                                    name={question.question}
-                                    value={answer}
-                                    onClick={() => updateStep()}
-                                    tabIndex={-1}
-                                />
-                                {answer}
-                            </label>
-                        ))}
+                    <div key={index} className="question-container">
+                        <h2 id={`question-${index}`} tabIndex={0} className="question">
+                            <p> {question.number} </p>
+                            {question.question}</h2>  
+                        <div className="answers">
+                            {question.answers.map((answer, answerIndex) => (
+                                <div
+                                    key={answerIndex}
+                                    className={`answer-card ${answer.className}`} // Wijziging hier: Gebruik de className
+                                    tabIndex={0}
+                                    onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
+                                    onClick={() => updateStep()} // Bij klikken op de antwoordkaart
+                                >
+                                    {answer.text} {/* Toont de tekst van het antwoord */}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 )
             ))}
