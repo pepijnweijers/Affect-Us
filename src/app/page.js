@@ -24,6 +24,8 @@ export default function Home() {
             answers: [
                 { text: "Aan school zitten", className: "antwoord1" },
                 { text: "Sporten", className: "antwoord2" },
+                { text: "Boek lezen", className: "antwoord3" },
+                { text: "Boek lezen", className: "antwoord3" },
                 { text: "Boek lezen", className: "antwoord3" }
             ]
         }
