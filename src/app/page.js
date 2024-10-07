@@ -1,5 +1,6 @@
 'use client'
 
+import './css/styles.css';  // Correct pad naar je CSS-map
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
             question: "Hoe voel je je?",
             type: "singleChoice",
             answers: [
-                "Goed",
+                "Goedd",
                 "Neutraal",
                 "Slecht"
             ]

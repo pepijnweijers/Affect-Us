@@ -1,0 +1,55 @@
+/* Centraal container */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+/* Vraag styling */
+.question-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Antwoorden styling */
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Label styling voor knoppen */
+.answer-label {
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.answer-label:hover {
+    background-color: #0056b3;
+}
+
+.answer-label:focus {
+    outline: 2px solid #0056b3;
+}
+
+/* Radio input verbergen */
+.radio-input {
+    display: none;
+}
