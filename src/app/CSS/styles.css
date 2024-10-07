@@ -2,12 +2,13 @@
 
 body {
     margin: 0;
-    background: #141414;
+    background: #3d3d3d;
     font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw; 
     overflow: hidden;
 }
 
@@ -17,13 +18,7 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center; 
-    align-items: center; 
-
-    
     flex-direction: column; 
-  
-   
-    
 }
 
 .question {
@@ -32,7 +27,6 @@ body {
 }
 
 .question h2 {
-    font-size: 36px;
     margin: 10px 10px;
     font-weight: 500;
 }
@@ -51,7 +45,7 @@ body {
     padding: 20px; 
     border-radius: 8px;
     text-align: center;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 600;
     cursor: pointer; 
     transition: background 0.3s; 
