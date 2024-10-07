@@ -15,9 +15,7 @@ const poppins = Poppins({
 export default function RootLayout({ children }) {
     return (
         <html lang="nl">
-            
             <body className={poppins.className}>
-                
                 {children}
             </body>
         </html>

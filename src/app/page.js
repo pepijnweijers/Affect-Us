@@ -19,12 +19,12 @@ export default function Home() {
         },
         {
             number: "Vraag 2 van 5",
-            question: "Wat ga je vandaag doen?",
+            question: "Wat vind jij het leukste om te doen in je vrijetijd?",
             type: "singleChoice",
             answers: [
-                { text: "School", className: "antwoord1" },
+                { text: "Aan school zitten", className: "antwoord1" },
                 { text: "Sporten", className: "antwoord2" },
-                { text: "Lezen", className: "antwoord3" }
+                { text: "Boek lezen", className: "antwoord3" }
             ]
         }
     ];

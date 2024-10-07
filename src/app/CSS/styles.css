@@ -12,11 +12,18 @@ body {
 }
 
 .container {
-    width: 100vw;
+    background-color: rgb(0, 0, 0);
+    width: 100vw; 
     height: 100vh;
     display: flex;
     justify-content: center; 
     align-items: center; 
+
+    
+    flex-direction: column; 
+  
+   
+    
 }
 
 .question {
@@ -25,9 +32,9 @@ body {
 }
 
 .question h2 {
-    font-size: 48px;
-    margin: 10px 0;
-    font-weight: 700;
+    font-size: 36px;
+    margin: 10px 10px;
+    font-weight: 500;
 }
 
 .answers {
@@ -35,6 +42,7 @@ body {
     justify-content: space-between;
     width: 100%;
     margin-top: 20px;
+    color: #D9D9D9; 
 }
 
 .answer-card {
@@ -47,9 +55,12 @@ body {
     font-weight: 600;
     cursor: pointer; 
     transition: background 0.3s; 
+    
 }
 .question {
-    font-size: 24px; 
+    font-size: 56px;
+    font-weight: 600;
+    margin: 10px 10px; 
     color: #D9D9D9; 
 }
 
@@ -59,7 +70,7 @@ body {
 }
 
 .answer-card:hover {
-    filter: brightness(1.1); 
+    filter: brightness(2.1); 
 }
 
 .antwoord1 {
@@ -72,31 +83,4 @@ body {
 
 .antwoord3 {
     background-color: rgba(217, 102, 102, 0.7); /* Rood*/
-}
-
-/* Cirkel styling */
-.circle {
-    width: 120px;
-    height: 120px;
-    background: white;
-    border-radius: 50%;
-    position: absolute; 
-    left: 20px; 
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.inner-circle {
-    width: 98px;
-    height: 95px;
-    position: relative;
-    background: transparent;
-}
-
-.inner-circle div {
-    background: #141414;
-    border-radius: 9999px;
-    position: absolute;
 }
