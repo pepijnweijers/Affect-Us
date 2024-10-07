@@ -7,77 +7,71 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Volledige hoogte van het venster */
-    overflow: hidden; /* Voorkomt scrollen */
+    height: 100vh;
+    overflow: hidden;
 }
 
 .container {
-    width: 100vw; /* Volledige breedte van het venster */
-    height: 100vh; /* Volledige hoogte van het venster */
-    background: #1e1e1e; /* Donkere achtergrond voor de container */
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    padding: 20px;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centraal uitlijnen in de container */
-    align-items: center;
-    position: relative; /* Voor absolute positionering van de cirkel */
+    justify-content: center; 
+    align-items: center; 
 }
 
 .question {
     text-align: center;
-    margin-bottom: 30px; /* Ruimte onder de vraag */
+    margin-bottom: 20px;
 }
 
 .question h2 {
-    font-size: 48px; /* Grotere lettergrootte */
+    font-size: 48px;
     margin: 10px 0;
     font-weight: 700;
 }
 
 .answers {
     display: flex;
-    justify-content: space-between; /* Spreidt de antwoorden uit over de breedte */
-    width: 100%; /* Volledige breedte voor antwoorden */
-    margin-top: 20px; /* Ruimte boven de antwoorden */
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
 }
 
 .answer-card {
-    flex: 1; /* Maakt de kaarten even breed */
-    margin: 0 10px; /* Ruimte tussen de kaarten */
-    padding: 40px; /* Binnenruimte van de kaarten */
+    flex: 1; 
+    margin: 0 10px; 
+    padding: 20px; 
     border-radius: 8px;
     text-align: center;
-    font-size: 36px; /* Grotere lettergrootte voor antwoorden */
+    font-size: 36px;
     font-weight: 600;
-    cursor: pointer; /* Cursor verandert bij hover */
-    transition: background 0.3s; /* Aangename overgang bij hover */
+    cursor: pointer; 
+    transition: background 0.3s; 
 }
 .question {
-    font-size: 24px; /* Grotere subtekst */
-    color: #D9D9D9; /* Lichtere kleur voor de subtekst */
+    font-size: 24px; 
+    color: #D9D9D9; 
 }
 
-.number {
+.question-number {
     font-size: 24px;
     color: #D9D9D9;
 }
 
 .answer-card:hover {
-    filter: brightness(1.1); /* Verheldert de achtergrond bij hover */
+    filter: brightness(1.1); 
 }
 
 .antwoord1 {
-    background-color: rgba(109, 176, 85, 0.7); /* Groen voor Goed */
+    background-color: rgba(109, 176, 85, 0.7); /* Groen*/
 }
 
 .antwoord2 {
-    background-color: rgba(255, 221, 51, 0.7); /* Geel voor Neutraal */
+    background-color: rgba(255, 221, 51, 0.7); /* Geel*/
 }
 
 .antwoord3 {
-    background-color: rgba(217, 102, 102, 0.7); /* Rood voor Slecht */
+    background-color: rgba(217, 102, 102, 0.7); /* Rood*/
 }
 
 /* Cirkel styling */
@@ -86,8 +80,8 @@ body {
     height: 120px;
     background: white;
     border-radius: 50%;
-    position: absolute; /* Absolute positie in container */
-    left: 20px; /* Plaats de cirkel links boven */
+    position: absolute; 
+    left: 20px; 
     top: 20px;
     display: flex;
     justify-content: center;
@@ -97,12 +91,12 @@ body {
 .inner-circle {
     width: 98px;
     height: 95px;
-    position: relative; /* Voor lijnen binnen de cirkel */
-    background: transparent; /* Geen achtergrond voor inner circle */
+    position: relative;
+    background: transparent;
 }
 
 .inner-circle div {
-    background: #141414; /* Donkere achtergrond voor de lijnen */
+    background: #141414;
     border-radius: 9999px;
     position: absolute;
 }

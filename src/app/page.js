@@ -8,7 +8,7 @@ export default function Home() {
 
     const questions = [
         {
-            number: "vraag 1 van 5",
+            number: "Vraag 1 van 5",
             question: "Hoe voel je je?",
             type: "singleChoice",
             answers: [
@@ -18,7 +18,7 @@ export default function Home() {
             ]
         },
         {
-            number: "vraag 2 van 5",
+            number: "Vraag 2 van 5",
             question: "Wat ga je vandaag doen?",
             type: "singleChoice",
             answers: [
@@ -52,19 +52,21 @@ export default function Home() {
             {questions.map((question, index) => (
                 step === index && (
                     <div key={index} className="question-container">
-                        <h2 id={`question-${index}`} tabIndex={0} className="question">
-                            <p> {question.number} </p>
-                            {question.question}</h2>  
+                    <div className="question">
+                        <h2 id={`question-${index}`} tabIndex={0} className="question-number">
+                            {question.number}</h2>
+                        <p className="question-text">{question.question}</p>
+                    </div> 
                         <div className="answers">
                             {question.answers.map((answer, answerIndex) => (
                                 <div
                                     key={answerIndex}
-                                    className={`answer-card ${answer.className}`} // Wijziging hier: Gebruik de className
+                                    className={`answer-card ${answer.className}`}
                                     tabIndex={0}
                                     onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
-                                    onClick={() => updateStep()} // Bij klikken op de antwoordkaart
+                                    onClick={() => updateStep()}
                                 >
-                                    {answer.text} {/* Toont de tekst van het antwoord */}
+                                    {answer.text} 
                                 </div>
                             ))}
                         </div>
