@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
+/* CSS/styles.css */
+
+body {
+    @apply bg-neutral-800 text-xl text-neutral-200;
+}
+
 .wrapper{
-    @apply max-w-5xl;
+    @apply container mx-auto px-4;
+}
+
+.answer-card:hover {
+    filter: brightness(2.1); 
+}
+
+.antwoord1 {
+    background-color: rgba(109, 176, 85, 0.7); /* Groen*/
+}
+
+.antwoord2 {
+    background-color: rgba(255, 221, 51, 0.7); /* Geel*/
+}
+
+.antwoord3 {
+    background-color: rgba(217, 102, 102, 0.7); /* Rood*/
+}
+
+.antwoord4 {
+    background-color: rgba(146 0 253 / 70%); /* paars*/
+}
+
+.antwoord5 {
+    background-color:  rgb(109 109 109); /* grijs*/
 }

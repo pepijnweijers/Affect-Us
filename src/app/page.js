@@ -1,6 +1,5 @@
 'use client';
 
-import './CSS/styles.css'; 
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -69,32 +68,47 @@ export default function Home() {
     }, [step]);
 
     return (
-        <div className="container">
-            {questions.map((question, index) => (
+        <div className="wrapper">
+            {questions.length > step ?
+                questions.map((question, index) => (
                 step === index && (
-                    <div key={index} className="question-container">
-                    <div className="question">
-                        <p tabIndex={0} className="question-number">
-                            {index+1} / {questions.length}</p>
-                        <h2 id={`question-${index}`} className="question-text" tabIndex={0}>{question.question}</h2>
-                    </div> 
-                        <div className="answers">
+                    <div key={index} className="flex flex-col py-10 min-h-screen">
+                        <div>
+                            <p tabIndex={0} className="font-medium">
+                                Vraag {index+1} van de {questions.length}
+                            </p>
+                            <h2 
+                                id={`question-${index}`}
+                                className="text-5xl font-semibold mt-4 mb-8"
+                                tabIndex={0}
+                            >
+                                {question.question}
+                            </h2>
+                        </div> 
+
+                        <div className="flex-1 flex gap-4">
                             {question.answers.map((answer, answerIndex) => (
-                                <button
-                                    key={answerIndex}
-                                    className={`answer-card ${answer.className}`}
-                                    tabIndex={0}
-                                    onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
-                                    id={`answer-${index}-${answerIndex}`}
-                                    onClick={() => updateStep()}
-                                >
-                                    {answer.text} 
-                                </button>
+                                <div key={answerIndex} className={`flex-1`}>
+                                    <button
+                                        className={`peer w-full h-full text-4xl font-semibold text-white ${answer.className}`}
+                                        tabIndex={0}
+                                        onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
+                                        id={`answer-${index}-${answerIndex}`}
+                                        onClick={() => updateStep()}
+                                    >
+                                        {answer.text} 
+                                    </button>
+                                    <div className={`absolute motion-reduce:!opacity-0 peer-focus:opacity-100 opacity-0 ${answer.className} inset-0 -z-10 duration-500`} />
+                                </div>
                             ))}
                         </div>
                     </div>
                 )
-            ))}
+            )) : (
+                <div>
+                    Eind scherm
+                </div>
+            )}
         </div>
     );
 }
