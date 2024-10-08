@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from "react";
+import { IconMoodHappyFilled } from '@tabler/icons-react';
 
 export default function Home() {
     const [step, setStep] = useState(0);
@@ -10,29 +11,29 @@ export default function Home() {
             question: "vind je het leuk hier?",
             type: "singleChoice",
             answers: [
-                { text: "Ja", className: "antwoord1" },
-                { text: "Nee", className: "antwoord2" },
-                { text: "Geen antwoord", className: "antwoord3" }
+                { text: "Ja", color: "#64CB40" },
+                { text: "Nee", color: "#DF3030" },
+                { text: "Geen antwoord", color: "#FBBA00" }
             ]
         },
         {
             question: "Wat vind jij het leukste om te doen in je vrijetijd?",
             type: "singleChoice",
             answers: [
-                { text: "Wandelen", className: "antwoord1" },
-                { text: "Sporten", className: "antwoord2" },
-                { text: "Boek lezen", className: "antwoord3" }
+                { text: "Wandelen", icon: "antwoord1" },
+                { text: "Sporten", icon: "antwoord2" },
+                { text: "Boek lezen", icon: "antwoord3" }
             ]
         },
         {
             question: "Hoe erg heb je het hier naar je zin?",
             type: "singleChoice",
             answers: [
-                { text: "Totaal niet", className: "antwoord1" },
-                { text: "Niet zo", className: "antwoord2" },
-                { text: "Neutraal", className: "antwoord3" },
-                { text: "Leuk", className: "antwoord4" },
-                { text: "Super leuk", className: "antwoord5" }
+                { text: "Totaal niet", color: "#DF3030" },
+                { text: "Niet zo", color: "#F38A12" },
+                { text: "Neutraal", color: "#FBBA00" },
+                { text: "Leuk", color: "#1F7DF7" },
+                { text: "Super leuk", color: "#64CB40" }
 
             ]
         },
@@ -40,11 +41,11 @@ export default function Home() {
             question: "Mijn gezondheid is even goed als die van de meeste van mijn vrienden.",
             type: "singleChoice",
             answers: [
-                { text: "Helemaal oneens", className: "antwoord1" },
-                { text: "Oneens", className: "antwoord2" },
-                { text: "Neutraal", className: "antwoord3" },
-                { text: "Eens", className: "antwoord4" },
-                { text: "Helemaal eens", className: "antwoord5" }
+                { text: "Helemaal oneens", color: "#DF3030" },
+                { text: "Oneens", color: "#F38A12" },
+                { text: "Neutraal", color: "#FBBA00" },
+                { text: "Eens", color: "#1F7DF7" },
+                { text: "Helemaal eens", color: "#64CB40" }
             ]
         },
     ];
@@ -90,15 +91,20 @@ export default function Home() {
                             {question.answers.map((answer, answerIndex) => (
                                 <div key={answerIndex} className={`flex-1`}>
                                     <button
-                                        className={`peer w-full h-full text-4xl font-semibold text-white ${answer.className}`}
+                                        className={`group peer flex flex-col w-full h-full text-4xl font-semibold text-white bg-neutral-800 border-2 border-neutral-700`}
                                         tabIndex={0}
                                         onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
                                         id={`answer-${index}-${answerIndex}`}
                                         onClick={() => updateStep()}
                                     >
-                                        {answer.text} 
+                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 motion-reduce:duration-0 duration-500" style={{ backgroundColor: answer.color }}>
+                                            {answer.icon &&
+                                                <IconMoodHappyFilled size={192} />
+                                            }
+                                        </div>
+                                        <span className="block py-10">{answer.text}</span>
                                     </button>
-                                    <div className={`absolute motion-reduce:!opacity-0 peer-focus:opacity-100 opacity-0 ${answer.className} inset-0 -z-10 duration-500`} />
+                                    <div className={`absolute motion-reduce:!opacity-0 peer-focus:animate-fadeHighlight opacity-0 inset-0 -z-10 duration-300`} style={{ backgroundColor: answer.color }} />
                                 </div>
                             ))}
                         </div>
