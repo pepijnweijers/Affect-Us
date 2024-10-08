@@ -8,7 +8,7 @@ export default function Home() {
 
     const questions = [
         {
-            number: "Vraag 1 van 5",
+            number: "Vraag 112 van 5",
             question: "vind je het leuk hier?",
             type: "singleChoice",
             answers: [
