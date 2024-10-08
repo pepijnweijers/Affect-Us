@@ -8,7 +8,6 @@ export default function Home() {
 
     const questions = [
         {
-            number: "Vraag 1 van 5",
             question: "vind je het leuk hier?",
             type: "singleChoice",
             answers: [
@@ -18,7 +17,6 @@ export default function Home() {
             ]
         },
         {
-            number: "Vraag 2 van 5",
             question: "Wat vind jij het leukste om te doen in je vrijetijd?",
             type: "singleChoice",
             answers: [
@@ -28,7 +26,6 @@ export default function Home() {
             ]
         },
         {
-            number: "Vraag 3 van 5",
             question: "Hoe erg heb je het hier naar je zin?",
             type: "singleChoice",
             answers: [
@@ -41,7 +38,6 @@ export default function Home() {
             ]
         },
         {
-            number: "Vraag 4 van 5",
             question: "Mijn gezondheid is even goed als die van de meeste van mijn vrienden.",
             type: "singleChoice",
             answers: [
@@ -78,21 +74,22 @@ export default function Home() {
                 step === index && (
                     <div key={index} className="question-container">
                     <div className="question">
-                        <h2 id={`question-${index}`} tabIndex={0} className="question-number">
-                            {question.number}</h2>
-                        <p className="question-text">{question.question}</p>
+                        <p tabIndex={0} className="question-number">
+                            {index+1} / {questions.length}</p>
+                        <h2 id={`question-${index}`} className="question-text" tabIndex={0}>{question.question}</h2>
                     </div> 
                         <div className="answers">
                             {question.answers.map((answer, answerIndex) => (
-                                <div
+                                <button
                                     key={answerIndex}
                                     className={`answer-card ${answer.className}`}
                                     tabIndex={0}
                                     onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
+                                    id={`answer-${index}-${answerIndex}`}
                                     onClick={() => updateStep()}
                                 >
                                     {answer.text} 
-                                </div>
+                                </button>
                             ))}
                         </div>
                     </div>
