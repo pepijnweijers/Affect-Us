@@ -97,7 +97,7 @@ export default function Home() {
                                         onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
                                         for={`answer-${index}-${answerIndex}`}
                                     >
-                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none" style={{ backgroundColor: answer.color }}>
+                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 group-hover:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none" style={{ backgroundColor: answer.color }}>
                                             {answer.icon &&
                                                 <IconMoodHappyFilled size={192} />
                                             }
@@ -115,7 +115,7 @@ export default function Home() {
                                             {answer.text}
                                         </span>
                                     </label>
-                                    <div className={`absolute motion-reduce:!opacity-0 peer-focus:animate-fadeHighlight opacity-0 inset-0 -z-10 duration-300`} style={{ backgroundColor: answer.color }} />
+                                    <div className={`absolute motion-reduce:!opacity-0 peer-focus:animate-fadeHighlight peer-hover:animate-fadeHighlight opacity-0 inset-0 -z-10 duration-300`} style={{ backgroundColor: answer.color }} />
                                 </div>
                             ))}
                         </div>
