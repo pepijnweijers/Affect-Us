@@ -111,9 +111,9 @@ export default function Home() {
                     </div>
                 )
             )) : (
-                <div>
+                <p>
                     Eind scherm
-                </div>
+                </p>
             )}
         </div>
     );

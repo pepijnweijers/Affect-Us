@@ -1,5 +1,6 @@
 import { Poppins } from 'next/font/google'
 import "./globals.css";
+import TTSFocusReader from './components/TTSFocusReader';
 
 export const metadata = {
     title: "Create Next App",
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="nl">
             <body className={poppins.className}>
+                <TTSFocusReader />
                 {children}
             </body>
         </html>
