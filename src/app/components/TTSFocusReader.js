@@ -27,10 +27,14 @@ const TTSFocusReader = () => {
     useEffect(() => {
         document.addEventListener('focusin', handleFocus);
         document.addEventListener('focusout', handleBlur);
+        document.addEventListener('mouseover', handleFocus);
+        document.addEventListener('mouseout', handleBlur);
 
         return () => {
             document.removeEventListener('focusin', handleFocus);
             document.removeEventListener('focusout', handleBlur);
+            document.removeEventListener('mouseover', handleFocus);
+            document.removeEventListener('mouseout', handleBlur);
         };
     }, []);
 

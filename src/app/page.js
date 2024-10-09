@@ -97,20 +97,21 @@ export default function Home() {
                                         onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
                                         for={`answer-${index}-${answerIndex}`}
                                     >
-                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 motion-reduce:duration-0 duration-500" style={{ backgroundColor: answer.color }}>
+                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none" style={{ backgroundColor: answer.color }}>
                                             {answer.icon &&
                                                 <IconMoodHappyFilled size={192} />
                                             }
                                         </div>
                                         <input
                                             id={`answer-${index}-${answerIndex}`}
+                                            className="opacity-0"
                                             type="radio"
                                             tabIndex={-1}
                                             name={question.question}
                                             value={answer.text}
                                             onClick={() => updateStep()}
                                         />
-                                        <span className="block py-10">
+                                        <span className="block py-10 text-center">
                                             {answer.text}
                                         </span>
                                     </label>
