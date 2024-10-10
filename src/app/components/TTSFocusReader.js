@@ -12,11 +12,13 @@ const TTSFocusReader = () => {
     };
 
     const handleFocus = (event) => {
-        const focusedElement = event.target;
-        const textToRead = focusedElement.innerText || focusedElement.value || '';
+        if(event.target !== document.body) {
+            const focusedElement = event.target;
+            const textToRead = focusedElement.innerText || focusedElement.value || '';
 
-        if (textToRead) {
-            speakText(textToRead);
+            if (textToRead) {
+                speakText(textToRead);
+            }
         }
     };
 

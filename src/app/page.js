@@ -51,7 +51,6 @@ export default function Home() {
     ];
 
     const updateStep = () => {
-
         setStep(prevStep => prevStep + 1);
     };
 
@@ -75,18 +74,28 @@ export default function Home() {
                 questions.map((question, index) => (
                 step === index && (
                     <div key={index} className="flex flex-col py-10 min-h-screen">
-                        <div>
+                        <div className="pb-10 flex items-center gap-x-10">
                             <p tabIndex={0} className="font-medium">
                                 Vraag {index+1} van de {questions.length}
                             </p>
-                            <h2 
-                                id={`question-${index}`}
-                                className="text-5xl font-semibold mt-4 mb-8"
-                                tabIndex={0}
-                            >
-                                {question.question}
-                            </h2>
-                        </div> 
+                            {step > 0 &&
+                                <button 
+                                    tabIndex={0}
+                                    onClick={() => setStep(step - 1)}
+                                    className='px-5 py-4 bg-neutral-50/20'
+                                    aria-label="Vorige vraag"
+                                >
+                                    Vorige vraag
+                                </button>
+                            }
+                        </div>
+                        <h2 
+                            id={`question-${index}`}
+                            className="text-5xl font-semibold mb-8"
+                            tabIndex={0}
+                        >
+                            {question.question}
+                        </h2>
 
                         <div className="flex-1 flex gap-4">
                             {question.answers.map((answer, answerIndex) => (
