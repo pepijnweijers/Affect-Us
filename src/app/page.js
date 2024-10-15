@@ -11,8 +11,8 @@ export default function Home() {
             question: "vind je het leuk hier?",
             type: "singleChoice",
             answers: [
-                { text: "Ja", color: "#64CB40" },
-                { text: "Nee", color: "#DF3030" },
+                { text: "Ja", color: "#64CB40", pitch: 1.3 },
+                { text: "Nee", color: "#DF3030", pitch: 0.1 },
                 { text: "Geen antwoord", color: "#FBBA00" }
             ]
         },
@@ -91,26 +91,29 @@ export default function Home() {
                         </div>
                         <h2 
                             id={`question-${index}`}
-                            className="text-5xl font-semibold mb-8"
+                            className="text-5xl font-semibold mb-10"
                             tabIndex={0}
                         >
                             {question.question}
                         </h2>
 
-                        <div className="flex-1 flex gap-4">
+                        <div className="flex-1 flex gap-10">
                             {question.answers.map((answer, answerIndex) => (
                                 <div key={answerIndex} className={`flex-1`}>
                                     <label
-                                        className={`group peer flex flex-col w-full h-full text-4xl font-semibold text-white bg-neutral-800 border-2 border-neutral-700`}
+                                        className={`group peer flex flex-col w-full h-full text-4xl font-semibold text-white bg-neutral-800 border-2 border-neutral-50`}
                                         tabIndex={0}
+                                        data-pitch={answer.pitch}
                                         onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
                                         for={`answer-${index}-${answerIndex}`}
                                     >
-                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 group-hover:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none" style={{ backgroundColor: answer.color }}>
-                                            {answer.icon &&
+                                        {answer.color ? (
+                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 group-hover:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none" style={{ backgroundColor: answer.color }} />
+                                        ) : ( answer.icon &&
+                                            <div className="w-full h-full flex items-center justify-center">
                                                 <IconMoodHappyFilled size={192} />
-                                            }
-                                        </div>
+                                            </div>
+                                        )}
                                         <input
                                             id={`answer-${index}-${answerIndex}`}
                                             className="opacity-0"
@@ -120,7 +123,7 @@ export default function Home() {
                                             value={answer.text}
                                             onClick={() => updateStep()}
                                         />
-                                        <span className="block py-10 text-center">
+                                        <span className="block py-10 text-center" tabIndex={-1}>
                                             {answer.text}
                                         </span>
                                     </label>

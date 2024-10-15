@@ -3,11 +3,13 @@
 import { useEffect } from 'react';
 
 const TTSFocusReader = () => {
-    const speakText = (text) => {
+    const speakText = (text, pitch) => {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.8;
+        utterance.rate = pitch 
+            ? (pitch < 0.9 ? 0.2 : 0.8) 
+            : 0.8;
         utterance.lang = "nl-NL";
-        utterance.pitch = 0.9;
+        utterance.pitch = pitch || 0.9;
         window.speechSynthesis.speak(utterance);
     };
 
@@ -15,9 +17,10 @@ const TTSFocusReader = () => {
         if(event.target !== document.body) {
             const focusedElement = event.target;
             const textToRead = focusedElement.innerText || focusedElement.value || '';
+            const pitch = event.target.getAttribute('data-pitch')
 
             if (textToRead) {
-                speakText(textToRead);
+                speakText(textToRead, pitch);
             }
         }
     };

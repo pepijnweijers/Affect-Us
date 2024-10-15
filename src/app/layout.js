@@ -16,7 +16,7 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="nl">
+        <html lang="nl-NL">
             <body className={poppins.className}>
                 <TTSFocusReader />
                 <FullScreenDetector />
