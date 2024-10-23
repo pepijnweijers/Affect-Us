@@ -96,7 +96,7 @@ export default function Home() {
                             >
                                 {question.title}
                             </h2>
-                            <p tabIndex={0} className={'mb-10'}>
+                            <p tabIndex={0} className={''}>
                                 {question.description}
                                 <br />
                                 Deze vragenlijst bestaat uit {questions.length - 1} vragen.
@@ -127,7 +127,9 @@ export default function Home() {
                             className="text-5xl font-semibold mb-10"
                             tabIndex={0}
                         >
-                            {question.question}
+                            {question.question} Kies uit {question.answers.map((answer, answerIndex) => (
+                                `, ${answer.text}`
+                            ))}
                         </h2>
 
                         <div className="flex-1 flex gap-5">
