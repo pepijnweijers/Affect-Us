@@ -39,7 +39,7 @@ const TTSFocusReader = () => {
             if (blockTabPress.current) {
                 event.preventDefault(); // Block the Tab press
             } else {
-                if (currentTime - lastTabTime < 500) { // 500ms = 0.5 seconds
+                if (currentTime - lastTabTime < 1000) { // 500ms = 0.5 seconds
                     event.preventDefault(); // Block the Tab press
                     blockTabPress.current = true;
                 } else {
