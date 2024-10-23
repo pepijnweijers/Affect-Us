@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 const TTSFocusReader = () => {
     const speakText = (text, pitch) => {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = pitch 
-            ? (pitch < 0.9 ? 0.2 : 0.8) 
-            : 0.8;
+        utterance.rate = (pitch 
+            ? (pitch < 0.9 ? 0.6 : 0.8) 
+            : 0.8) - 0.1;
         utterance.lang = "nl-NL";
         utterance.pitch = pitch || 0.9;
         window.speechSynthesis.speak(utterance);

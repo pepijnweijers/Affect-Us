@@ -1,51 +1,65 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { IconMoodHappyFilled } from '@tabler/icons-react';
+import { IconBike, IconMoodHappyFilled, IconMusic, IconMusicBolt, IconWalk } from '@tabler/icons-react';
 
 export default function Home() {
     const [step, setStep] = useState(0);
 
     const questions = [
         {
-            question: "vind je het leuk hier?",
+            title: "Test vragenlijst",
+            description: "Dit is een vragenlijst om te zien of wat wij gemaakt hebben goed werkt voor de cliënten. Je mag gerust tips geven. Dat helpt ons om beter te worden en onze fouten te verbeteren.",
+            type: "startScreen",
+        },
+        {
+            question: "Hoeveel hou je van zwemmen?",
             type: "singleChoice",
             answers: [
-                { text: "Ja", color: "#64CB40", pitch: 1.3 },
-                { text: "Nee", color: "#DF3030", pitch: 0.1 },
-                { text: "Geen antwoord", color: "#FBBA00" }
+                { text: "Klein beetje", color: "#DF3030", pitch: 0.8 },
+                { text: "Beetje", color: "#F38A12", pitch: 0.9 },
+                { text: "Gewoon", color: "#FBBA00" },
+                { text: "Veel", color: "#1F7DF7" },
+                { text: "Heel veel", color: "#64CB40", pitch: 1 }
             ]
         },
         {
-            question: "Wat vind jij het leukste om te doen in je vrijetijd?",
+            question: "Hoe spannend vind je het om nieuwe dingen te doen?",
             type: "singleChoice",
             answers: [
-                { text: "Wandelen", icon: "antwoord1" },
-                { text: "Sporten", icon: "antwoord2" },
-                { text: "Boek lezen", icon: "antwoord3" }
+                { text: "Klein beetje", color: "#DF3030", pitch: 0.8 },
+                { text: "Beetje", color: "#F38A12", pitch: 0.9 },
+                { text: "Gewoon", color: "#FBBA00" },
+                { text: "Veel", color: "#1F7DF7" },
+                { text: "Heel veel", color: "#64CB40", pitch: 1 }
             ]
         },
         {
-            question: "Hoe erg heb je het hier naar je zin?",
+            question: "Spreek je wel eens af met vrienden of vriendinnen?",
             type: "singleChoice",
             answers: [
-                { text: "Totaal niet", color: "#DF3030" },
-                { text: "Niet zo", color: "#F38A12" },
-                { text: "Neutraal", color: "#FBBA00" },
-                { text: "Leuk", color: "#1F7DF7" },
-                { text: "Super leuk", color: "#64CB40" }
+                { text: "Ja", color: "#64CB40", pitch: 1 },
+                { text: "Nee", color: "#DF3030" },
 
             ]
         },
         {
-            question: "Mijn gezondheid is even goed als die van de meeste van mijn vrienden.",
+            question: "Ga je wel eens sporten?",
             type: "singleChoice",
             answers: [
-                { text: "Helemaal oneens", color: "#DF3030" },
-                { text: "Oneens", color: "#F38A12" },
-                { text: "Neutraal", color: "#FBBA00" },
-                { text: "Eens", color: "#1F7DF7" },
-                { text: "Helemaal eens", color: "#64CB40" }
+                { text: "Ja", color: "#64CB40", pitch: 1 },
+                { text: "Nee", color: "#DF3030" },
+
+            ]
+        },
+        {
+            question: "Wat vind je het leukste om te doen?",
+            type: "singleChoice",
+            answers: [
+                { text: "Fietsen", icon: IconBike },
+                { text: "Muziek Luisteren", icon: IconMusic },
+                { text: "Wandelen", icon: IconWalk },
+
             ]
         },
     ];
@@ -73,12 +87,31 @@ export default function Home() {
             {questions.length > step ?
                 questions.map((question, index) => (
                 step === index && (
+                    question.type === 'startScreen' ? (
+                        <div>
+                            <h2 
+                                id={`question-${index}`}
+                                className="text-5xl font-semibold my-10"
+                                tabIndex={0}
+                            >
+                                {question.title}
+                            </h2>
+                            <p tabIndex={0} className={'mb-10'}>
+                                {question.description}
+                                <br />
+                                Deze vragenlijst bestaat uit {questions.length - 1} vragen.
+                            </p>
+                            <button className={'bg-[#FBBA00] px-4 py-3 text-neutral-900'} onClick={() => setStep(step + 1)}>
+                                Vragenlijst starten
+                            </button>
+                        </div>
+                    ) : (
                     <div key={index} className="flex flex-col py-10 min-h-screen">
                         <div className="pb-10 flex items-center gap-x-10">
                             <p tabIndex={0} className="font-medium">
-                                Vraag {index+1} van de {questions.length}
+                                Vraag {index} van de {questions.length - 1}
                             </p>
-                            {step > 0 &&
+                            {step > 1 &&
                                 <button 
                                     tabIndex={0}
                                     onClick={() => setStep(step - 1)}
@@ -97,7 +130,7 @@ export default function Home() {
                             {question.question}
                         </h2>
 
-                        <div className="flex-1 flex gap-10">
+                        <div className="flex-1 flex gap-5">
                             {question.answers.map((answer, answerIndex) => (
                                 <div key={answerIndex} className={`flex-1`}>
                                     <label
@@ -111,7 +144,7 @@ export default function Home() {
                                         <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 group-hover:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none" style={{ backgroundColor: answer.color }} />
                                         ) : ( answer.icon &&
                                             <div className="w-full h-full flex items-center justify-center">
-                                                <IconMoodHappyFilled size={192} />
+                                                <answer.icon size={192} />
                                             </div>
                                         )}
                                         <input
@@ -132,7 +165,7 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                )
+                ))
             )) : (
                 <p>
                     Eind scherm
