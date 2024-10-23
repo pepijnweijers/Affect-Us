@@ -7,7 +7,7 @@ const TTSFocusReader = () => {
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.rate = (pitch 
             ? (pitch < 0.9 ? 0.6 : 0.8) 
-            : 0.8) - 0.1;
+            : 0.8) - 0.3;
         utterance.lang = "nl-NL";
         utterance.pitch = pitch || 0.9;
         window.speechSynthesis.speak(utterance);
@@ -32,14 +32,14 @@ const TTSFocusReader = () => {
     useEffect(() => {
         document.addEventListener('focusin', handleFocus);
         document.addEventListener('focusout', handleBlur);
-        document.addEventListener('mouseover', handleFocus);
-        document.addEventListener('mouseout', handleBlur);
+        // document.addEventListener('mouseover', handleFocus);
+        // document.addEventListener('mouseout', handleBlur);
 
         return () => {
             document.removeEventListener('focusin', handleFocus);
             document.removeEventListener('focusout', handleBlur);
-            document.removeEventListener('mouseover', handleFocus);
-            document.removeEventListener('mouseout', handleBlur);
+            // document.removeEventListener('mouseover', handleFocus);
+            // document.removeEventListener('mouseout', handleBlur);
         };
     }, []);
 
