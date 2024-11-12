@@ -1,10 +1,40 @@
 'use client';
 
 import { useEffect, useState } from "react";
-import { IconBike, IconMoodHappyFilled, IconMusic, IconMusicBolt, IconWalk } from '@tabler/icons-react';
+//import { IconBike, IconMoodHappyFilled, IconMusic, IconMusicBolt, IconWalk } from '@tabler/icons-react';
+import { parseQSF } from './qsfParser'; // Importeer de qsfparser
+
+
+
 
 export default function Home() {
     const [step, setStep] = useState(0);
+    const [questions, setQuestions] = useState([]); // new
+
+    //new
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                try {
+                    const qsfData = JSON.parse(e.target.result);
+                    const parsedQuestions = parseQSF(qsfData); // Gebruik de parser
+                    setQuestions(parsedQuestions);
+                } catch (error) {
+                    console.error("Error parsing QSF file:", error);
+                }
+            };
+            reader.readAsText(file);
+        }
+    };
+
+
+
+
+
+
+    /*
 
     const questions = [
         {
@@ -63,6 +93,7 @@ export default function Home() {
             ]
         },
     ];
+   */ 
 
     const updateStep = () => {
         setStep(prevStep => prevStep + 1);
