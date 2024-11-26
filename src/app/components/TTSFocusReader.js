@@ -16,11 +16,12 @@ const TTSFocusReader = () => {
         window.speechSynthesis.speak(utterance);
     };
 
+
     const handleFocus = (event) => {
         if(event.target !== document.body) {
             const focusedElement = event.target;
             const textToRead = focusedElement.innerText || focusedElement.value || '';
-            const pitch = event.target.getAttribute('data-pitch');
+            const pitch = parseFloat(event.target.getAttribute('data-pitch'));
 
             if (textToRead) {
                 speakText(textToRead, pitch);
@@ -54,15 +55,31 @@ const TTSFocusReader = () => {
         }
     };
 
+        // Functie om de vraag opnieuw uit te spreken wanneer de herhaal-knop wordt ingedrukt
+        const handleRepeatQuestion = (event) => {
+            if (event.target.tagName === 'BUTTON') {
+                // Zoek het h2-element van de vraag en haal de pitch op uit het data-pitch attribuut
+                const questionElement = event.target.closest('div').querySelector('h2');
+                const textToRead = questionElement.innerText || '';
+                const pitch = parseFloat(questionElement.getAttribute('data-pitch')); // Haal de pitch op als een float
+                speakText(textToRead, pitch);  // Spreek de tekst uit met de juiste pitch
+            }
+        };
+
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('focusin', handleFocus);
         document.addEventListener('focusout', handleBlur);
 
+        const repeatButtons = document.querySelectorAll('.repeat-question-btn');
+        repeatButtons.forEach(button => button.addEventListener('click', handleRepeatQuestion));
+
+
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.removeEventListener('focusin', handleFocus);
             document.removeEventListener('focusout', handleBlur);
+            repeatButtons.forEach(button => button.removeEventListener('click', handleRepeatQuestion));
         };
     }, [lastTabTime]);
 

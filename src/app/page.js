@@ -75,6 +75,15 @@ export default function Home() {
         }
     };
 
+    const repeatQuestion = () => {
+        const question = questions[step];
+        if (question && question.question) {
+            const utterance = new SpeechSynthesisUtterance(question.question) ;
+            speechSynthesis.speak(utterance);
+        }
+    };
+
+
     useEffect(() => {
         const questionElement = document.getElementById(`question-${step}`);
         if (questionElement) {
@@ -122,6 +131,8 @@ export default function Home() {
                                 </button>
                             }
                         </div>
+                        
+                        <div>
                         <h2 
                             id={`question-${index}`}
                             className="text-5xl font-semibold mb-10"
@@ -131,6 +142,17 @@ export default function Home() {
                                 `, ${answer.text}`
                             ))}
                         </h2>
+
+                        <button 
+                                    tabIndex={0}
+                                    onClick={repeatQuestion}
+                                    className='px-5 py-4  bg-neutral-50/20 border-4 border-white-500 mb-10'
+                                    aria-label="de vraag herhalen"
+                                >
+                                    De vraag herhalen
+                                </button>
+
+                        </div>
 
                         <div className="flex-1 flex gap-5">
                             {question.answers.map((answer, answerIndex) => (
