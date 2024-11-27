@@ -8,34 +8,34 @@ export default function Home() {
 
     const questions = [
         {
-            title: "Test vragenlijst",
+            title: "Welkom bij de test vragenlijst",
             description: "Dit is een vragenlijst om te zien of wat wij gemaakt hebben goed werkt voor de cliënten. Je mag gerust tips geven. Dat helpt ons om beter te worden en onze fouten te verbeteren.",
             type: "startScreen",
         },
         {
-            question: "Hoeveel hou je van zwemmen?",
+            question: "Hoe vind je de maand december met de feestdagen?",
             type: "singleChoice",
             answers: [
-                { text: "Klein beetje", color: "#DF3030", pitch: 0.8 },
-                { text: "Beetje", color: "#F38A12", pitch: 0.9 },
-                { text: "Gewoon", color: "#FBBA00" },
-                { text: "Veel", color: "#1F7DF7" },
-                { text: "Heel veel", color: "#64CB40", pitch: 1 }
+                { text: "Niet leuk", color: "#DF3030", pitch: 0.8 },
+                { text: "Een beetje leuk", color: "#F38A12", pitch: 0.9 },
+                { text: "Gewoon leuk", color: "#FBBA00" },
+                { text: "Erg leuk", color: "#1F7DF7" },
+                { text: "Heel erg leuk", color: "#64CB40", pitch: 1 }
             ]
         },
         {
-            question: "Hoe spannend vind je het om nieuwe dingen te doen?",
+            question: "Hoe veel hou je van sneeuw?",
             type: "singleChoice",
             answers: [
-                { text: "Klein beetje", color: "#DF3030", pitch: 0.8 },
-                { text: "Beetje", color: "#F38A12", pitch: 0.9 },
-                { text: "Gewoon", color: "#FBBA00" },
-                { text: "Veel", color: "#1F7DF7" },
-                { text: "Heel veel", color: "#64CB40", pitch: 1 }
+                { text: "Niet leuk", color: "#DF3030", pitch: 0.8 },
+                { text: "Een beetje leuk", color: "#F38A12", pitch: 0.9 },
+                { text: "Gewoon leuk", color: "#FBBA00" },
+                { text: "Erg leuk", color: "#1F7DF7" },
+                { text: "Heel erg leuk", color: "#64CB40", pitch: 1 }
             ]
         },
         {
-            question: "Spreek je wel eens af met vrienden of vriendinnen?",
+            question: "Luister je graag naar kerstliedjes?",
             type: "singleChoice",
             answers: [
                 { text: "Ja", color: "#64CB40", pitch: 1 },
@@ -44,24 +44,25 @@ export default function Home() {
             ]
         },
         {
-            question: "Ga je wel eens sporten?",
+            question: "Vind je kerst of Sinterklaas leuker?",
             type: "singleChoice",
             answers: [
-                { text: "Ja", color: "#64CB40", pitch: 1 },
-                { text: "Nee", color: "#DF3030" },
-
+                { text: "Kerst", color: "#64CB40", pitch: 1 },
+                { text: "Sinterklaas", color: "#DF3030" },
+                { text: "Geen van beide", color: "#FBBA00" },
+                { text: "Beide", color: "#1F7DF7" },
             ]
         },
         {
-            question: "Wat vind je het leukste om te doen?",
+            question: "Heb je een kerstboom?",
             type: "singleChoice",
             answers: [
-                { text: "Fietsen", icon: IconBike },
-                { text: "Muziek Luisteren", icon: IconMusic },
-                { text: "Wandelen", icon: IconWalk },
-
+                { text: "Ja", color: "#64CB40", pitch: 1 },
+                { text: "Nee", color: "#DF3030", pitch: 0.8 },
+                { text: "Soms", color: "#FBBA00" },
             ]
         },
+    
     ];
 
     const updateStep = () => {
@@ -108,9 +109,9 @@ export default function Home() {
                             <p tabIndex={0} className={''}>
                                 {question.description}
                                 <br />
-                                Deze vragenlijst bestaat uit {questions.length - 1} vragen.
+                                Deze vragenlijst bestaat uit {questions.length - 1} vragen. Klik op TAB om de vragenlijst te beginnen.
                             </p>
-                            <button className={'bg-[#FBBA00] px-4 py-3 text-neutral-900'} onClick={() => setStep(step + 1)}>
+                            <button className={'bg-[#FBBA00] px-4 py-3 text-neutral-900 mt-8 rounded-lg'} onClick={() => setStep(step + 1)}>
                                 Vragenlijst starten
                             </button>
                         </div>
@@ -124,12 +125,20 @@ export default function Home() {
                                 <button 
                                     tabIndex={0}
                                     onClick={() => setStep(step - 1)}
-                                    className='px-5 py-4 bg-neutral-50/20'
+                                    className='px-5 py-4 bg-neutral-50 text-neutral-900 rounded-lg'
                                     aria-label="Vorige vraag"
                                 >
                                     Vorige vraag
                                 </button>
-                            }
+                            }                            
+                            <button 
+                                    tabIndex={0}
+                                    onClick={() => setStep(step + 1)}
+                                    className='px-5 py-4 bg-neutral-50 text-neutral-900 rounded-lg'
+                                    aria-label="Volgende vraag"
+                                >
+                                    Volgende vraag
+                            </button>
                         </div>
                         
                         <div>
@@ -146,7 +155,7 @@ export default function Home() {
                         <button 
                                     tabIndex={0}
                                     onClick={repeatQuestion}
-                                    className='px-5 py-4  bg-neutral-50/20 border-4 border-white-500 mb-10'
+                                    className='px-5 py-4  bg-neutral-50/20 border-4 border-white-500 mb-10 rounded-lg'
                                     aria-label="de vraag herhalen"
                                 >
                                     De vraag herhalen
@@ -158,14 +167,14 @@ export default function Home() {
                             {question.answers.map((answer, answerIndex) => (
                                 <div key={answerIndex} className={`flex-1`}>
                                     <label
-                                        className={`group peer flex flex-col w-full h-full text-4xl font-semibold text-white bg-neutral-800 border-2 border-neutral-50`}
+                                        className={`group peer flex flex-col w-full h-full text-4xl font-semibold text-white bg-neutral-800 border-2 border-neutral-50 rounded-lg`}
                                         tabIndex={0}
                                         data-pitch={answer.pitch}
                                         onKeyDown={(e) => handleKeyDown(e, `answer-${index}-${answerIndex}`)}
                                         for={`answer-${index}-${answerIndex}`}
                                     >
                                         {answer.color ? (
-                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 group-hover:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none" style={{ backgroundColor: answer.color }} />
+                                        <div className="w-full h-full flex items-center justify-center opacity-50 group-focus:opacity-100 group-hover:opacity-100 motion-reduce:duration-0 duration-500 pointer-events-none rounded-md" style={{ backgroundColor: answer.color }} />
                                         ) : ( answer.icon &&
                                             <div className="w-full h-full flex items-center justify-center">
                                                 <answer.icon size={192} />
